@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 05d0da41caa07156bbc0eb2fa4c38d40f266b8f1 Ayoub <ayoubremidi@hotmail.com> 1729763504 +0200	commit (initial): Ajout du fichier principal du projet et exclusion des fichiers temporaires
+05d0da41caa07156bbc0eb2fa4c38d40f266b8f1 ddd8920efcbab402a0c5f0f3aad339e28b90cbff Ayoub <ayoubremidi@hotmail.com> 1729763692 +0200	commit: Retrait des images et vidéos indésirables du dossier Maroc
+ddd8920efcbab402a0c5f0f3aad339e28b90cbff 6a658d363eb49c18c8325a3199f2f823f2bb3f32 Ayoub <ayoubremidi@hotmail.com> 1729763832 +0200	commit: Ajout du fichier .gitignore pour ignorer les fichiers système et multimédias
+6a658d363eb49c18c8325a3199f2f823f2bb3f32 6ae7fdcfe17c14e6afb76b0c6d8869e8faf36198 Ayoub <ayoubremidi@hotmail.com> 1729764202 +0200	pull origin main --rebase (start): checkout 6ae7fdcfe17c14e6afb76b0c6d8869e8faf36198
+6ae7fdcfe17c14e6afb76b0c6d8869e8faf36198 7519b61692597cb1cea93ddf4a31444582a614a9 Ayoub <ayoubremidi@hotmail.com> 1729764203 +0200	pull origin main --rebase (pick): Ajout du fichier principal du projet et exclusion des fichiers temporaires
+7519b61692597cb1cea93ddf4a31444582a614a9 aee60ecb8f7fac89bdb0f0c6242e4582b353e236 Ayoub <ayoubremidi@hotmail.com> 1729764203 +0200	pull origin main --rebase (pick): Retrait des images et vidéos indésirables du dossier Maroc
+aee60ecb8f7fac89bdb0f0c6242e4582b353e236 1ea61281f2db748b080d3dc8f0a937044a713503 Ayoub <ayoubremidi@hotmail.com> 1729764203 +0200	pull origin main --rebase (pick): Ajout du fichier .gitignore pour ignorer les fichiers système et multimédias
+1ea61281f2db748b080d3dc8f0a937044a713503 1ea61281f2db748b080d3dc8f0a937044a713503 Ayoub <ayoubremidi@hotmail.com> 1729764203 +0200	pull origin main --rebase (finish): returning to refs/heads/main
+1ea61281f2db748b080d3dc8f0a937044a713503 da16c5c950125001eb831663dbee2e900294bad1 Ayoub <ayoubremidi@hotmail.com> 1729764582 +0200	commit: Ajout ou mise à jour du fichier mon_projet.py
+da16c5c950125001eb831663dbee2e900294bad1 4f7531c2896a4b9b37c14f1f670fb5256c87f5a8 Ayoub <ayoubremidi@hotmail.com> 1729765188 +0200	commit: Retrait de tous les fichiers sauf mon_projet.py
+4f7531c2896a4b9b37c14f1f670fb5256c87f5a8 403e9562fd040f73c47f82dd977f7f469a1f6a39 Ayoub <ayoubremidi@hotmail.com> 1729765549 +0200	commit: Ajout du fichier mon_projet.py
+403e9562fd040f73c47f82dd977f7f469a1f6a39 94300fd4072025890a8b2e570f1f094ac5e56b27 Ayoub <ayoubremidi@hotmail.com> 1729836718 +0200	commit: Ajout de Exos.py
+94300fd4072025890a8b2e570f1f094ac5e56b27 a9cff12382d311c3c6eda8be22bb95634da5ef71 Ayoub <ayoubremidi@hotmail.com> 1731412651 +0100	commit: Ajout du dossier PIC_python_tuto
