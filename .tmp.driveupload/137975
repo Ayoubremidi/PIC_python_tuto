@@ -1,0 +1,69 @@
+# Titre du VSM
+print("Value Stream Mapping (VSM) - ABC Emboutissage")
+print("=" * 50)
+
+# Informations du fournisseur et du client
+print("\nFournisseur : Aciers Ultra ----> (Livraison d'acier les mardis et jeudis) ----> Client : Carbec")
+
+# Processus d'emboutissage
+print("\nProcessus : Emboutissage")
+print("  Temps de Cycle      : 1 seconde par pièce")
+print("  Temps de Changement : 1 heure")
+print("  Stock Observé       : 4600 pièces (G) / 2400 pièces (D)")
+print("  Taux d'Utilisation  : 85%")
+
+# Flèche de transition
+print("      |")
+print("      V")
+
+# Processus de Soudage Poste 1
+print("\nProcessus : Soudage - Poste 1")
+print("  Temps de Cycle      : 39 secondes par pièce")
+print("  Temps de Changement : 10 minutes")
+print("  Stock Observé       : 1100 pièces (G) / 600 pièces (D)")
+print("  Taux d'Utilisation  : 100%")
+
+# Flèche de transition
+print("      |")
+print("      V")
+
+# Processus de Soudage Poste 2
+print("\nProcessus : Soudage - Poste 2")
+print("  Temps de Cycle      : 46 secondes par pièce")
+print("  Temps de Changement : 10 minutes")
+print("  Stock Observé       : 1600 pièces (G) / 850 pièces (D)")
+print("  Taux d'Utilisation  : 80%")
+
+# Flèche de transition
+print("      |")
+print("      V")
+
+# Processus de Montage Poste 1
+print("\nProcessus : Montage - Poste 1")
+print("  Temps de Cycle      : 62 secondes par pièce")
+print("  Temps de Changement : Aucun")
+print("  Stock Observé       : 1200 pièces (G) / 640 pièces (D)")
+print("  Taux d'Utilisation  : 100%")
+
+# Flèche de transition
+print("      |")
+print("      V")
+
+# Processus de Montage Poste 2
+print("\nProcessus : Montage - Poste 2")
+print("  Temps de Cycle      : 40 secondes par pièce")
+print("  Temps de Changement : Aucun")
+print("  Stock Observé       : 2700 pièces (G) / 1440 pièces (D)")
+print("  Taux d'Utilisation  : 100%")
+
+# Flèche de transition finale vers les expéditions
+print("      |")
+print("      V")
+
+# Processus d'expédition
+print("\nProcessus : Expéditions")
+print("  Préparation et palettisation des pièces")
+print("  Livraison quotidienne vers le client Carbec")
+
+print("\n" + "=" * 50)
+print("Fin du VSM - ABC Emboutissage")

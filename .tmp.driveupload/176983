@@ -1,0 +1,1758 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 1.3\n",
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 312,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "15\n",
+      "40\n"
+     ]
+    }
+   ],
+   "source": [
+    "def polynomiale(a, b, c, d, x):\n",
+    "    return a * x**3 + b * x**2 + c * x + d\n",
+    "\n",
+    "# Jeu de tests\n",
+    "print(polynomiale(1, 1, 1, 1, 2))  # Doit donner 15\n",
+    "print(polynomiale(1, 1, 1, 1, 3))  # Doit donner 40\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 313,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "21\n",
+      "91\n"
+     ]
+    }
+   ],
+   "source": [
+    "def polynomiale_carre(a, b, c, x):\n",
+    "    x2 = x * x      # Calcul de x^2, une multiplication\n",
+    "    x4 = x2 * x2    # Utilisation de x^2 pour obtenir x^4, une autre multiplication\n",
+    "    return a * x4 + b * x2 + c  # Multiplication par a et b, puis addition avec c\n",
+    "\n",
+    "# Tests pour vérifier le fonctionnement de la fonction\n",
+    "print(polynomiale_carre(1, 1, 1, 2))  # Devrait retourner 21\n",
+    "print(polynomiale_carre(1, 1, 1, 3))  # Devrait retourner 91"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 1.4\n",
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 314,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3.141592653589793\n",
+      "12.566370614359172\n",
+      "0.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "import math\n",
+    "\n",
+    "def aire_disque(r):\n",
+    "    return math.pi * r ** 2\n",
+    "\n",
+    "# Jeu de tests\n",
+    "print(aire_disque(1))    # Doit donner environ 3.141592653589793\n",
+    "print(aire_disque(2))    # Doit donner environ 12.566370614359172\n",
+    "print(aire_disque(0))    # Doit donner 0.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 315,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "9.42477796076938\n",
+      "28.274333882308138\n",
+      "0.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "def aire_couronne(r1, r2):\n",
+    "    # Calcul de l'aire en utilisant les aires des deux disques\n",
+    "    return aire_disque(r2) - aire_disque(r1)\n",
+    "\n",
+    "# Jeu de tests\n",
+    "print(aire_couronne(1, 2))    # Doit donner environ 9.42477796076938\n",
+    "print(aire_couronne(0, 3))    # Doit donner environ 28.274333882308138\n",
+    "print(aire_couronne(2, 2))    # Doit donner 0.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 2.3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 316,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "cas 1\n",
+      "cas 2\n",
+      "cas 3\n",
+      "cas 5\n",
+      "cas 4\n",
+      "cas 6\n"
+     ]
+    }
+   ],
+   "source": [
+    "def f(n1: float, n2: float, n3: float) -> str:\n",
+    "    \"\"\"Précondition : n1 != n2 and n2 != n3 and n3 != n1\n",
+    "    retourne un cas parmi 6 selon les valeurs de n1, n2 et n3.\n",
+    "    \"\"\"\n",
+    "    if n1 < n2 and n2 < n3:\n",
+    "        return 'cas 1'\n",
+    "    elif n1 < n3 and n3 < n2:\n",
+    "        return 'cas 2'\n",
+    "    elif n2 < n1 and n1 < n3:\n",
+    "        return 'cas 3'\n",
+    "    elif n2 < n3 and n3 < n1:\n",
+    "        return 'cas 4'\n",
+    "    elif n3 < n1 and n1 < n2:\n",
+    "        return 'cas 5'\n",
+    "    else:\n",
+    "        return 'cas 6'\n",
+    "\n",
+    "# Jeu de tests\n",
+    "print(f(1, 2, 3))  # cas 1 : n1 < n2 < n3\n",
+    "print(f(1, 3, 2))  # cas 2 : n1 < n3 < n2\n",
+    "print(f(2, 1, 3))  # cas 3 : n2 < n1 < n3\n",
+    "print(f(2, 3, 1))  # cas 4 : n2 < n3 < n1\n",
+    "print(f(3, 1, 2))  # cas 5 : n3 < n1 < n2\n",
+    "print(f(3, 2, 1))  # cas 6 : n3 < n2 < n1\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 317,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "cas 1\n",
+      "cas 2\n",
+      "cas 3\n",
+      "cas 6\n",
+      "cas 4\n",
+      "cas 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "def f(n1: float, n2: float, n3: float) -> str:\n",
+    "    \"\"\"Précondition : n1 != n2 and n2 != n3 and n3 != n1\n",
+    "    retourne un cas parmi 6 selon les valeurs de n1, n2 et n3, sans utiliser and ni or.\n",
+    "    \"\"\"\n",
+    "    if n1 < n2:\n",
+    "        if n2 < n3:\n",
+    "            return 'cas 1'  # n1 < n2 < n3\n",
+    "        else:\n",
+    "            if n1 < n3:\n",
+    "                return 'cas 2'  # n1 < n3 < n2\n",
+    "            else:\n",
+    "                return 'cas 6'  # n3 < n2 < n1\n",
+    "    else:\n",
+    "        if n1 < n3:\n",
+    "            return 'cas 3'  # n2 < n1 < n3\n",
+    "        else:\n",
+    "            if n2 < n3:\n",
+    "                return 'cas 4'  # n2 < n3 < n1\n",
+    "            else:\n",
+    "                return 'cas 5'  # n3 < n1 < n2\n",
+    "\n",
+    "# Vérification du jeu de tests avec la nouvelle définition\n",
+    "print(f(1, 2, 3))  # cas 1\n",
+    "print(f(1, 3, 2))  # cas 2\n",
+    "print(f(2, 1, 3))  # cas 3\n",
+    "print(f(2, 3, 1))  # cas 4\n",
+    "print(f(3, 1, 2))  # cas 5\n",
+    "print(f(3, 2, 1))  # cas 6"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 3.3 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 318,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n",
+      "False\n",
+      "True\n",
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "def divise(n, p):\n",
+    "    return p % n == 0\n",
+    "\n",
+    "# Tests pour vérifier le fonctionnement de la fonction\n",
+    "print(divise(2, 10))  # True, car 2 divise 10 sans reste\n",
+    "print(divise(3, 10))  # False, car 3 ne divise pas 10 sans reste\n",
+    "print(divise(5, 10))  # True, car 5 divise 10 sans reste\n",
+    "print(divise(7, 49))  # True, car 7 divise 49 sans reste"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Version sans sortie anticipée\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 319,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def est_premier(n):\n",
+    "    if n <= 1:\n",
+    "        return False\n",
+    "    est_prem = True\n",
+    "    for i in range(2, n):\n",
+    "        if n % i == 0:\n",
+    "            est_prem = False\n",
+    "            break  # Ajout d'un break ici pour améliorer légèrement l'efficacité\n",
+    "    return est_prem"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Version avec sortie anticipée"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 320,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def est_premier_avec_sortie(n):\n",
+    "    if n <= 1:\n",
+    "        return False\n",
+    "    for i in range(2, int(n**0.5) + 1):\n",
+    "        if n % i == 0:\n",
+    "            return False\n",
+    "    return True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 3.4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 321,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def reste(a, b):\n",
+    "    while a >= b:\n",
+    "        a -= b\n",
+    "    return a\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 322,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def est_divisible(a, b):\n",
+    "    return reste(a, b) == 0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 4.3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 323,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Le PGCD de 54 et 15 est : 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "def pgcd(a, b):\n",
+    "    while b != 0:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "# Exemple d'utilisation de la fonction\n",
+    "print(\"Le PGCD de 54 et 15 est :\", pgcd(54, 15))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 324,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Le PGCD de 54 et 15 est : 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "def pgcd(a, b):\n",
+    "    while b:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "# Test de la fonction\n",
+    "print(\"Le PGCD de 54 et 15 est :\", pgcd(54, 15))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 3 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 325,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Le PGCD de 54 et 15 est : 3\n"
+     ]
+    }
+   ],
+   "source": [
+    "def pgcd(a, b):\n",
+    "    while b != 0:\n",
+    "        a, b = b, a % b  # Met à jour 'a' et 'b' à chaque tour\n",
+    "    return a\n",
+    "\n",
+    "# Exemple d'utilisation\n",
+    "print(\"Le PGCD de 54 et 15 est :\", pgcd(54, 15))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 4.4 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 326,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "9\n",
+      "36\n",
+      "100\n"
+     ]
+    }
+   ],
+   "source": [
+    "def somme_cubes(n):\n",
+    "    s = 0  # Initialise la somme à 0\n",
+    "    for k in range(1, n+1):  # Boucle de 1 à n\n",
+    "        s += k**3  # Ajoute le cube de k à la somme\n",
+    "    return s  # Retourne la somme des cubes\n",
+    "\n",
+    "# Tests de la fonction pour vérifier son fonctionnement\n",
+    "print(somme_cubes(0))  # 0\n",
+    "print(somme_cubes(1))  # 1\n",
+    "print(somme_cubes(2))  # 9\n",
+    "print(somme_cubes(3))  # 36\n",
+    "print(somme_cubes(4))  # 100"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 327,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Somme des cubes de 1 à 0: 0\n",
+      "Somme des cubes de 1 à 1: 1\n",
+      "Somme des cubes de 1 à 2: 9\n",
+      "Somme des cubes de 1 à 3: 36\n",
+      "Somme des cubes de 1 à 4: 100\n"
+     ]
+    }
+   ],
+   "source": [
+    "def somme_cubes(n):\n",
+    "    s = 0  # Initialise la somme à 0\n",
+    "    k = 1  # Commence à calculer les cubes à partir de 1\n",
+    "    while k <= n:\n",
+    "        s += k**3  # Ajoute le cube de k à la somme\n",
+    "        k += 1  # Incrémente k pour passer au prochain nombre\n",
+    "    return s  # Retourne la somme totale des cubes\n",
+    "\n",
+    "# Tests pour vérifier la fonction avec des explications sur l'invariant\n",
+    "print(\"Somme des cubes de 1 à 0:\", somme_cubes(0))  # 0, conforme à l'invariant initial\n",
+    "print(\"Somme des cubes de 1 à 1:\", somme_cubes(1))  # 1, valide après la première itération\n",
+    "print(\"Somme des cubes de 1 à 2:\", somme_cubes(2))  # 9, invariant vérifié\n",
+    "print(\"Somme des cubes de 1 à 3:\", somme_cubes(3))  # 36, invariant vérifié\n",
+    "print(\"Somme des cubes de 1 à 4:\", somme_cubes(4))  # 100, invariant vérifié"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 3 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 328,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Total multiplications: 8\n",
+      "Total additions: 4\n",
+      "Somme des cubes de 1 à 4: 100\n"
+     ]
+    }
+   ],
+   "source": [
+    "def somme_cubes(n):\n",
+    "    s = 0  # Initialise la somme à 0\n",
+    "    k = 1  # Commence à calculer les cubes à partir de 1\n",
+    "    count_mult = 0  # Compteur pour les multiplications\n",
+    "    count_add = 0   # Compteur pour les additions\n",
+    "    \n",
+    "    while k <= n:\n",
+    "        # Calcul du cube de k implique deux multiplications\n",
+    "        cube = k * k\n",
+    "        cube *= k\n",
+    "        count_mult += 2  # Incrémente le compteur de multiplications\n",
+    "\n",
+    "        # Ajout du cube à la somme s implique une addition\n",
+    "        s += cube\n",
+    "        count_add += 1  # Incrémente le compteur d'additions\n",
+    "\n",
+    "        # Incrémente k pour passer au prochain nombre\n",
+    "        k += 1\n",
+    "    \n",
+    "    # Affichage des compteurs pour les opérations arithmétiques\n",
+    "    print(f\"Total multiplications: {count_mult}\")\n",
+    "    print(f\"Total additions: {count_add}\")\n",
+    "    return s\n",
+    "\n",
+    "# Test de la fonction avec n = 4 pour confirmer le calcul des opérations\n",
+    "result = somme_cubes(4)\n",
+    "print(\"Somme des cubes de 1 à 4:\", result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 4 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 329,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Après ajout de 1^3, s = 1\n",
+      "Attendu pour k = 1: 0\n",
+      "Après ajout de 2^3, s = 9\n",
+      "Attendu pour k = 2: 1\n",
+      "Après ajout de 3^3, s = 36\n",
+      "Attendu pour k = 3: 9\n",
+      "Après ajout de 4^3, s = 100\n",
+      "Attendu pour k = 4: 36\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "100"
+      ]
+     },
+     "execution_count": 329,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def somme_cubes(n):\n",
+    "    s = 0  # Initialise la somme à 0\n",
+    "    k = 1  # Commence à calculer les cubes à partir de 1\n",
+    "    while k <= n:\n",
+    "        s += k**3  # Ajoute le cube de k à la somme\n",
+    "        print(f\"Après ajout de {k}^3, s = {s}\")\n",
+    "        expected_s = ((k * (k - 1)) // 2) ** 2\n",
+    "        print(f\"Attendu pour k = {k}: {expected_s}\")\n",
+    "        k += 1\n",
+    "    return s\n",
+    "\n",
+    "somme_cubes(4)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 5 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 330,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "somme_cubes: 100\n",
+      "somme_cubes_rapide: 100\n",
+      "somme_cubes(10): 3025\n",
+      "somme_cubes_rapide(10): 3025\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Version itérative de somme_cubes\n",
+    "def somme_cubes(n):\n",
+    "    s = 0\n",
+    "    for k in range(1, n + 1):\n",
+    "        s += k**3\n",
+    "    return s\n",
+    "\n",
+    "# Version optimisée de somme_cubes utilisant la formule directe\n",
+    "def somme_cubes_rapide(n):\n",
+    "    # Utilise la formule directe pour calculer la somme des cubes de 1 à n\n",
+    "    return ((n * (n + 1)) // 2) ** 2\n",
+    "\n",
+    "# Test pour vérifier que les deux fonctions donnent le même résultat\n",
+    "n = 4\n",
+    "print(\"somme_cubes:\", somme_cubes(n))           # Devrait retourner 100\n",
+    "print(\"somme_cubes_rapide:\", somme_cubes_rapide(n))  # Devrait aussi retourner 100\n",
+    "\n",
+    "# Test supplémentaire pour d'autres valeurs de n\n",
+    "print(\"somme_cubes(10):\", somme_cubes(10))            # Calcule la somme des cubes de 1 à 10\n",
+    "print(\"somme_cubes_rapide(10):\", somme_cubes_rapide(10))  # Vérifie que les deux fonctions donnent le même résultat"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 5.3 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 331,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n",
+      "False\n",
+      "True\n",
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "def est_palindrome(s):\n",
+    "    return s == s[::-1]\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(est_palindrome(''))                       # True, une chaîne vide est un palindrome\n",
+    "print(est_palindrome('je ne suis pas un palindrome'))  # False\n",
+    "print(est_palindrome('aba'))                    # True, \"aba\" est un palindrome\n",
+    "print(est_palindrome('amanaplanacanalpanama'))  # True, \"amanaplanacanalpanama\" est un palindrome"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 332,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "abccba\n",
+      "amanaplanacanallanacanalpanama\n",
+      "do-re-mi-fa-sollos-af-im-er-od\n"
+     ]
+    }
+   ],
+   "source": [
+    "def miroir(s):\n",
+    "    return s + s[::-1]\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(miroir('abc'))               # Devrait retourner 'abccba'\n",
+    "print(miroir('amanaplanacanal'))   # Devrait retourner 'amanaplanacanallanacanalpanama'\n",
+    "print(miroir('do-re-mi-fa-sol'))   # Devrait retourner 'do-re-mi-fa-sollos-af-im-er-od'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 5.4 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 333,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "aaaa\n",
+      "le apa noel\n",
+      "bbbbb\n"
+     ]
+    }
+   ],
+   "source": [
+    "def suppression_debut(c, s):\n",
+    "    index = s.find(c)\n",
+    "    return s[:index] + s[index+1:] if index != -1 else s\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(suppression_debut('a', ''))               # Devrait retourner ''\n",
+    "print(suppression_debut('a', 'aaaaa'))          # Devrait retourner 'aaaa'\n",
+    "print(suppression_debut('p', 'le papa noel'))   # Devrait retourner 'le apa noel'\n",
+    "print(suppression_debut('a', 'bbbbb'))          # Devrait retourner 'bbbbb'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 334,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "aaaa\n",
+      "le paa noel\n",
+      "bbbbb\n"
+     ]
+    }
+   ],
+   "source": [
+    "def suppression_derniere(c, s):\n",
+    "    # Cherche l'index de la dernière occurrence de c dans s\n",
+    "    index = s.rfind(c)\n",
+    "    \n",
+    "    # Si c est trouvé dans s, on enlève le caractère à cet index\n",
+    "    return s[:index] + s[index+1:] if index != -1 else s\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(suppression_derniere('a', ''))               # Devrait retourner ''\n",
+    "print(suppression_derniere('a', 'aaaaa'))          # Devrait retourner 'aaaa'\n",
+    "print(suppression_derniere('p', 'le papa noel'))   # Devrait retourner 'le paa noel'\n",
+    "print(suppression_derniere('a', 'bbbbb'))          # Devrait retourner 'bbbbb'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 6.3 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 335,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3, 6, 9, 18]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def liste_diviseurs(a):\n",
+    "    # On crée une liste vide pour stocker les diviseurs\n",
+    "    diviseurs = []\n",
+    "    \n",
+    "    # On parcourt tous les nombres de 1 à a inclus\n",
+    "    for i in range(1, a + 1):\n",
+    "        # Si i est un diviseur de a, on l'ajoute à la liste\n",
+    "        if a % i == 0:\n",
+    "            diviseurs.append(i)\n",
+    "    \n",
+    "    return diviseurs\n",
+    "\n",
+    "# Exemple de test\n",
+    "print(liste_diviseurs(18))  # Devrait retourner [1, 2, 3, 6, 9, 18]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 336,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 3]\n",
+      "[1]\n",
+      "[1, 3, 5, 15]\n"
+     ]
+    }
+   ],
+   "source": [
+    "def liste_diviseurs_impairs(a):\n",
+    "    # On crée une liste vide pour stocker les diviseurs impairs\n",
+    "    diviseurs_impairs = []\n",
+    "    \n",
+    "    # On parcourt tous les nombres de 1 à a inclus\n",
+    "    for i in range(1, a + 1):\n",
+    "        # Vérifie si i est un diviseur de a et s'il est impair\n",
+    "        if a % i == 0 and i % 2 != 0:\n",
+    "            diviseurs_impairs.append(i)\n",
+    "    \n",
+    "    return diviseurs_impairs\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(liste_diviseurs_impairs(24))  # Devrait retourner [1, 3]\n",
+    "print(liste_diviseurs_impairs(8))   # Devrait retourner [1]\n",
+    "print(liste_diviseurs_impairs(15))  # Devrait retourner [1, 3, 5, 15]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 6.4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 337,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n",
+      "True\n",
+      "True\n",
+      "False\n",
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "def f(l: list) -> bool:\n",
+    "    \"\"\"\n",
+    "    Vérifie si la liste l est strictement croissante.\n",
+    "    \n",
+    "    Args:\n",
+    "    l (list): Liste d'éléments comparables.\n",
+    "    \n",
+    "    Returns:\n",
+    "    bool: True si la liste est vide, contient un seul élément, ou si elle est strictement croissante.\n",
+    "          False sinon.\n",
+    "    \"\"\"\n",
+    "    # Cas de base : si la liste est vide ou ne contient qu'un seul élément\n",
+    "    if len(l) == 0 or len(l) == 1:\n",
+    "        return True\n",
+    "    \n",
+    "    # Vérifie que chaque élément est strictement inférieur au suivant\n",
+    "    for i in range(len(l) - 1):\n",
+    "        if l[i] >= l[i + 1]:\n",
+    "            return False\n",
+    "    \n",
+    "    return True\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(f([]))            # Devrait retourner True (liste vide)\n",
+    "print(f([1]))           # Devrait retourner True (un seul élément)\n",
+    "print(f([1, 2, 3, 4]))  # Devrait retourner True (strictement croissante)\n",
+    "print(f([1, 2, 2, 3]))  # Devrait retourner False (2 n'est pas strictement inférieur à 2)\n",
+    "print(f([4, 3, 2, 1]))  # Devrait retourner False (liste décroissante)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 338,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Simulation pour f([3, 5, 7, 10]):\n",
+      "Comparaison: l[0] = 3 et l[1] = 5\n",
+      "Comparaison: l[1] = 5 et l[2] = 7\n",
+      "Comparaison: l[2] = 7 et l[3] = 10\n",
+      "La liste est strictement croissante.\n",
+      "Résultat: True\n",
+      "\n",
+      "Simulation pour f([3, 15, 7, 10]):\n",
+      "Comparaison: l[0] = 3 et l[1] = 15\n",
+      "Comparaison: l[1] = 15 et l[2] = 7\n",
+      "Condition échouée:  15 >= 7\n",
+      "Résultat: False\n"
+     ]
+    }
+   ],
+   "source": [
+    "def f(l):\n",
+    "    \"\"\"\n",
+    "    Vérifie si la liste l est strictement croissante.\n",
+    "    \n",
+    "    Args:\n",
+    "    l (list): Liste d'éléments comparables.\n",
+    "    \n",
+    "    Returns:\n",
+    "    bool: True si la liste est vide, contient un seul élément, ou si elle est strictement croissante.\n",
+    "          False sinon.\n",
+    "    \"\"\"\n",
+    "    if len(l) == 0 or len(l) == 1:\n",
+    "        return True\n",
+    "    \n",
+    "    for i in range(len(l) - 1):\n",
+    "        print(f\"Comparaison: l[{i}] = {l[i]} et l[{i + 1}] = {l[i + 1]}\")\n",
+    "        if l[i] >= l[i + 1]:\n",
+    "            print(\"Condition échouée: \", l[i], \">=\", l[i + 1])\n",
+    "            return False\n",
+    "    print(\"La liste est strictement croissante.\")\n",
+    "    return True\n",
+    "\n",
+    "# Simulations avec les deux listes\n",
+    "print(\"Simulation pour f([3, 5, 7, 10]):\")\n",
+    "result1 = f([3, 5, 7, 10])\n",
+    "print(\"Résultat:\", result1)\n",
+    "\n",
+    "print(\"\\nSimulation pour f([3, 15, 7, 10]):\")\n",
+    "result2 = f([3, 15, 7, 10])\n",
+    "print(\"Résultat:\", result2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 3 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 339,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n",
+      "True\n",
+      "True\n",
+      "True\n",
+      "False\n",
+      "False\n",
+      "False\n",
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "def est_strictement_croissante(l: list) -> bool:\n",
+    "    \"\"\"\n",
+    "    Vérifie si la liste donnée est strictement croissante.\n",
+    "    \n",
+    "    Une liste est strictement croissante si chaque élément est strictement inférieur\n",
+    "    à l'élément suivant. Une liste vide ou avec un seul élément est considérée comme\n",
+    "    strictement croissante.\n",
+    "    \n",
+    "    Args:\n",
+    "    l (list): Liste d'éléments comparables (nombres ou autres éléments ordonnés).\n",
+    "    \n",
+    "    Returns:\n",
+    "    bool: True si la liste est vide, contient un seul élément, ou si elle est strictement croissante.\n",
+    "          False sinon.\n",
+    "    \n",
+    "    Exemples:\n",
+    "    >>> est_strictement_croissante([])\n",
+    "    True\n",
+    "    >>> est_strictement_croissante([3])\n",
+    "    True\n",
+    "    >>> est_strictement_croissante([1, 2, 3])\n",
+    "    True\n",
+    "    >>> est_strictement_croissante([1, 3, 2])\n",
+    "    False\n",
+    "    \"\"\"\n",
+    "    # Cas de base : la liste est vide ou a un seul élément\n",
+    "    if len(l) == 0 or len(l) == 1:\n",
+    "        return True\n",
+    "    \n",
+    "    # Parcours de la liste pour vérifier la croissance stricte\n",
+    "    for i in range(len(l) - 1):\n",
+    "        if l[i] >= l[i + 1]:  # Si un élément n'est pas strictement inférieur au suivant\n",
+    "            return False\n",
+    "    \n",
+    "    return True  # Si tous les éléments sont strictement croissants\n",
+    "\n",
+    "\n",
+    "# Jeu de tests pour valider la fonction\n",
+    "print(est_strictement_croissante([]))                  # True, liste vide\n",
+    "print(est_strictement_croissante([3]))                 # True, un seul élément\n",
+    "print(est_strictement_croissante([1, 2, 3, 4]))       # True, liste strictement croissante\n",
+    "print(est_strictement_croissante([3, 5, 7, 10]))      # True, liste strictement croissante\n",
+    "print(est_strictement_croissante([3, 15, 7, 10]))     # False, 15 n'est pas inférieur à 7\n",
+    "print(est_strictement_croissante([1, 2, 2, 3]))       # False, 2 n'est pas strictement inférieur à 2\n",
+    "print(est_strictement_croissante([4, 3, 2, 1]))       # False, liste décroissante\n",
+    "print(est_strictement_croissante([1, 2, 5, 10, 9]))   # False, 10 n'est pas inférieur à 9"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 4 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 340,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def est_strictement_croissante(l: list) -> bool:\n",
+    "    \"\"\"\n",
+    "    Vérifie si la liste donnée est strictement croissante.\n",
+    "    \n",
+    "    Une liste est strictement croissante si chaque élément est strictement inférieur\n",
+    "    à l'élément suivant. Une liste vide ou avec un seul élément est considérée comme\n",
+    "    strictement croissante.\n",
+    "    \n",
+    "    Args:\n",
+    "    l (list): Liste d'éléments comparables (nombres ou autres éléments ordonnés).\n",
+    "    \n",
+    "    Returns:\n",
+    "    bool: True si la liste est vide, contient un seul élément, ou si elle est strictement croissante.\n",
+    "          False sinon.\n",
+    "    \"\"\"\n",
+    "    # Cas de base : la liste est vide ou a un seul élément\n",
+    "    if len(l) == 0 or len(l) == 1:\n",
+    "        return True\n",
+    "\n",
+    "    # Variable de contrôle pour indiquer si la liste est strictement croissante\n",
+    "    croissante = True\n",
+    "    i = 0\n",
+    "\n",
+    "    # Boucle while avec une sortie anticipée de boucle\n",
+    "    while i < len(l) - 1 and croissante:\n",
+    "        if l[i] >= l[i + 1]:  # Si un élément n'est pas strictement inférieur au suivant\n",
+    "            croissante = False  # Mettre la variable de contrôle à False pour sortir de la boucle\n",
+    "        i += 1  # Incrémenter l'indice\n",
+    "\n",
+    "    return croissante  # Retourne le résultat final après la boucle"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 7.4 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 341,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 4)\n",
+      "(4, 3)\n",
+      "(3, 4)\n",
+      "(11, 17)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import Tuple\n",
+    "\n",
+    "def pgcd(a: int, b: int) -> int:\n",
+    "    # Fonction pour calculer le PGCD en utilisant l'algorithme d'Euclide\n",
+    "    while b != 0:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "def fraction(a: int, b: int) -> Tuple[int, int]:\n",
+    "    \"\"\"\n",
+    "    Retourne la fraction canonique (irréductible) correspondant à la fraction a/b.\n",
+    "    \n",
+    "    Args:\n",
+    "    a (int): Numérateur de la fraction.\n",
+    "    b (int): Dénominateur de la fraction (non nul).\n",
+    "    \n",
+    "    Returns:\n",
+    "    Tuple[int, int]: La fraction simplifiée sous forme de tuple (numérateur, dénominateur).\n",
+    "    \"\"\"\n",
+    "    if b == 0:\n",
+    "        raise ValueError(\"Le dénominateur ne peut pas être nul\")\n",
+    "    \n",
+    "    # Calcul du PGCD de a et b\n",
+    "    p = pgcd(a, b)\n",
+    "    \n",
+    "    # Simplification de la fraction\n",
+    "    return (a // p, b // p)\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(fraction(9, 12))      # Devrait retourner (3, 4)\n",
+    "print(fraction(12, 9))      # Devrait retourner (4, 3)\n",
+    "print(fraction(180, 240))   # Devrait retourner (3, 4)\n",
+    "print(fraction(121, 187))   # Devrait retourner (11, 17)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 342,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 2)\n",
+      "(1, 1)\n",
+      "(3, 4)\n",
+      "(0, 1)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import Tuple\n",
+    "\n",
+    "def pgcd(a: int, b: int) -> int:\n",
+    "    # Fonction pour calculer le PGCD en utilisant l'algorithme d'Euclide\n",
+    "    while b != 0:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "def fraction(a: int, b: int) -> Tuple[int, int]:\n",
+    "    \"\"\"\n",
+    "    Retourne la fraction canonique (irréductible) correspondant à la fraction a/b.\n",
+    "    \"\"\"\n",
+    "    if b == 0:\n",
+    "        raise ValueError(\"Le dénominateur ne peut pas être nul\")\n",
+    "    \n",
+    "    p = pgcd(a, b)\n",
+    "    return (a // p, b // p)\n",
+    "\n",
+    "def frac_mult(f1: Tuple[int, int], f2: Tuple[int, int]) -> Tuple[int, int]:\n",
+    "    \"\"\"\n",
+    "    Retourne la fraction canonique correspondant au produit de deux fractions f1 et f2.\n",
+    "    \n",
+    "    Args:\n",
+    "    f1 (Tuple[int, int]): Première fraction sous forme de tuple (numérateur, dénominateur).\n",
+    "    f2 (Tuple[int, int]): Deuxième fraction sous forme de tuple (numérateur, dénominateur).\n",
+    "    \n",
+    "    Returns:\n",
+    "    Tuple[int, int]: La fraction résultante, simplifiée sous forme de tuple (numérateur, dénominateur).\n",
+    "    \"\"\"\n",
+    "    # Multiplier les numérateurs et les dénominateurs\n",
+    "    num = f1[0] * f2[0]\n",
+    "    den = f1[1] * f2[1]\n",
+    "    \n",
+    "    # Retourner la fraction canonique du résultat\n",
+    "    return fraction(num, den)\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(frac_mult((3, 4), (8, 4)))  # Devrait retourner (3, 2)\n",
+    "print(frac_mult((3, 4), (4, 3)))  # Devrait retourner (1, 1)\n",
+    "print(frac_mult((3, 4), (1, 1)))  # Devrait retourner (3, 4)\n",
+    "print(frac_mult((3, 4), (0, 2)))  # Devrait retourner (0, 1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 3"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 343,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(3, 8)\n",
+      "(9, 16)\n",
+      "(3, 4)\n",
+      "(9, 8)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import Tuple\n",
+    "\n",
+    "def pgcd(a: int, b: int) -> int:\n",
+    "    while b != 0:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "def fraction(a: int, b: int) -> Tuple[int, int]:\n",
+    "    if b == 0:\n",
+    "        raise ValueError(\"Le dénominateur ne peut pas être nul\")\n",
+    "    p = pgcd(a, b)\n",
+    "    return (a // p, b // p)\n",
+    "\n",
+    "def frac_mult(f1: Tuple[int, int], f2: Tuple[int, int]) -> Tuple[int, int]:\n",
+    "    num = f1[0] * f2[0]\n",
+    "    den = f1[1] * f2[1]\n",
+    "    return fraction(num, den)\n",
+    "\n",
+    "def frac_div(f1: Tuple[int, int], f2: Tuple[int, int]) -> Tuple[int, int]:\n",
+    "    \"\"\"\n",
+    "    Retourne la fraction canonique correspondant à la division de deux fractions f1 et f2.\n",
+    "    \n",
+    "    Args:\n",
+    "    f1 (Tuple[int, int]): Première fraction sous forme de tuple (numérateur, dénominateur).\n",
+    "    f2 (Tuple[int, int]): Deuxième fraction sous forme de tuple (numérateur, dénominateur).\n",
+    "    \n",
+    "    Returns:\n",
+    "    Tuple[int, int]: La fraction résultante, simplifiée sous forme de tuple (numérateur, dénominateur).\n",
+    "    \"\"\"\n",
+    "    # Vérification pour s'assurer que la division par zéro n'est pas effectuée\n",
+    "    if f2[0] == 0:\n",
+    "        raise ValueError(\"La division par une fraction avec numérateur 0 est impossible\")\n",
+    "    \n",
+    "    # Division en multipliant par l'inverse de f2\n",
+    "    return frac_mult(f1, (f2[1], f2[0]))\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(frac_div((3, 4), (8, 4)))  # Devrait retourner (3, 8)\n",
+    "print(frac_div((3, 4), (4, 3)))  # Devrait retourner (9, 16)\n",
+    "print(frac_div((3, 4), (1, 1)))  # Devrait retourner (3, 4)\n",
+    "print(frac_div((3, 4), (2, 3)))  # Devrait retourner (9, 8)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 4 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 344,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(9, 4)\n",
+      "(5, 6)\n",
+      "(5, 6)\n",
+      "(1, 2)\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import Tuple\n",
+    "\n",
+    "def pgcd(a: int, b: int) -> int:\n",
+    "    while b != 0:\n",
+    "        a, b = b, a % b\n",
+    "    return a\n",
+    "\n",
+    "def ppcm(a: int, b: int) -> int:\n",
+    "    \"\"\"\n",
+    "    Retourne le plus petit commun multiple (PPCM) de a et b.\n",
+    "    \"\"\"\n",
+    "    return abs(a * b) // pgcd(a, b)\n",
+    "\n",
+    "def fraction(a: int, b: int) -> Tuple[int, int]:\n",
+    "    if b == 0:\n",
+    "        raise ValueError(\"Le dénominateur ne peut pas être nul\")\n",
+    "    p = pgcd(a, b)\n",
+    "    return (a // p, b // p)\n",
+    "\n",
+    "def frac_add(f1: Tuple[int, int], f2: Tuple[int, int]) -> Tuple[int, int]:\n",
+    "    \"\"\"\n",
+    "    Retourne la fraction canonique correspondant à la somme de deux fractions f1 et f2.\n",
+    "    \n",
+    "    Args:\n",
+    "    f1 (Tuple[int, int]): Première fraction sous forme de tuple (numérateur, dénominateur).\n",
+    "    f2 (Tuple[int, int]): Deuxième fraction sous forme de tuple (numérateur, dénominateur).\n",
+    "    \n",
+    "    Returns:\n",
+    "    Tuple[int, int]: La fraction résultante, simplifiée sous forme de tuple (numérateur, dénominateur).\n",
+    "    \"\"\"\n",
+    "    a, b = f1\n",
+    "    c, d = f2\n",
+    "    \n",
+    "    # Calcul du PPCM des dénominateurs b et d\n",
+    "    p = ppcm(b, d)\n",
+    "    \n",
+    "    # Calcul du numérateur de la somme\n",
+    "    num = a * (p // b) + c * (p // d)\n",
+    "    \n",
+    "    # Le dénominateur de la somme est le PPCM\n",
+    "    den = p\n",
+    "    \n",
+    "    # Retourne la fraction simplifiée\n",
+    "    return fraction(num, den)\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(frac_add((8, 4), (1, 4)))  # Devrait retourner (9, 4)\n",
+    "print(frac_add((2, 3), (1, 6)))  # Devrait retourner (5, 6)\n",
+    "print(frac_add((1, 2), (1, 3)))  # Devrait retourner (5, 6)\n",
+    "print(frac_add((1, 4), (1, 4)))  # Devrait retourner (1, 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# EXO 8.3 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 345,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[3, 5, 7, 9]\n",
+      "[2, 4, 5]\n",
+      "[]\n",
+      "[]\n",
+      "[2, 3, 4, 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import List\n",
+    "\n",
+    "def liste_non_multiple(n: int, l: List[int]) -> List[int]:\n",
+    "    \"\"\"\n",
+    "    Retourne une liste des éléments de l qui ne sont pas multiples de n.\n",
+    "    \n",
+    "    Args:\n",
+    "    n (int): Un entier non nul.\n",
+    "    l (List[int]): Une liste d'entiers.\n",
+    "    \n",
+    "    Returns:\n",
+    "    List[int]: Une nouvelle liste contenant les éléments de l qui ne sont pas des multiples de n.\n",
+    "    \"\"\"\n",
+    "    return [x for x in l if x % n != 0]\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(liste_non_multiple(2, [2, 3, 4, 5, 6, 7, 8, 9, 10]))  # Devrait retourner [3, 5, 7, 9]\n",
+    "print(liste_non_multiple(3, [2, 3, 4, 5]))                   # Devrait retourner [2, 4, 5]\n",
+    "print(liste_non_multiple(2, [2, 4, 6]))                      # Devrait retourner []\n",
+    "print(liste_non_multiple(2, []))                             # Devrait retourner []\n",
+    "print(liste_non_multiple(7, [2, 3, 4, 5]))                   # Devrait retourner [2, 3, 4, 5]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2 "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 1 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 346,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 3, 5, 7]\n",
+      "[2]\n",
+      "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import List\n",
+    "\n",
+    "def eratosthene(n: int) -> List[int]:\n",
+    "    \"\"\"\n",
+    "    Calcule la liste des nombres premiers inférieurs ou égaux à n\n",
+    "    en utilisant le crible d'Ératosthène.\n",
+    "    \n",
+    "    Args:\n",
+    "    n (int): Entier supérieur ou égal à 2.\n",
+    "    \n",
+    "    Returns:\n",
+    "    List[int]: Liste des nombres premiers inférieurs ou égaux à n.\n",
+    "    \"\"\"\n",
+    "    # Vérification pour les cas où n est inférieur à 2\n",
+    "    if n < 2:\n",
+    "        return []\n",
+    "    \n",
+    "    # Initialisation de la liste des nombres de 2 à n\n",
+    "    nombres = list(range(2, n + 1))\n",
+    "    premier = 2\n",
+    "    \n",
+    "    # Boucle pour éliminer les multiples des nombres premiers\n",
+    "    while premier * premier <= n:\n",
+    "        # Retirer les multiples de `premier`\n",
+    "        nombres = [x for x in nombres if (x == premier or x % premier != 0)]\n",
+    "        \n",
+    "        # Passer au prochain nombre premier dans la liste\n",
+    "        for i in nombres:\n",
+    "            if i > premier:\n",
+    "                premier = i\n",
+    "                break\n",
+    "    \n",
+    "    return nombres\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(eratosthene(10))  # Devrait retourner [2, 3, 5, 7]\n",
+    "print(eratosthene(2))   # Devrait retourner [2]\n",
+    "print(eratosthene(40))  # Devrait retourner [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 347,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 3, 5, 7]\n",
+      "[2]\n",
+      "[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import List\n",
+    "\n",
+    "def eratosthene(n: int) -> List[int]:\n",
+    "    \"\"\"\n",
+    "    Calcule la liste des nombres premiers inférieurs ou égaux à n\n",
+    "    en utilisant le crible d'Ératosthène.\n",
+    "    \n",
+    "    Args:\n",
+    "    n (int): Entier supérieur ou égal à 2.\n",
+    "    \n",
+    "    Returns:\n",
+    "    List[int]: Liste des nombres premiers inférieurs ou égaux à n.\n",
+    "    \"\"\"\n",
+    "    # Vérification pour les cas où n est inférieur à 2\n",
+    "    if n < 2:\n",
+    "        return []\n",
+    "    \n",
+    "    # Initialisation de la liste des nombres de 2 à n\n",
+    "    nombres = list(range(2, n + 1))\n",
+    "    premier = 2\n",
+    "    \n",
+    "    # Boucle pour éliminer les multiples des nombres premiers\n",
+    "    while premier * premier <= n:\n",
+    "        # Retirer les multiples de `premier`\n",
+    "        nombres = [x for x in nombres if (x == premier or x % premier != 0)]\n",
+    "        \n",
+    "        # Passer au prochain nombre premier dans la liste\n",
+    "        for i in nombres:\n",
+    "            if i > premier:\n",
+    "                premier = i\n",
+    "                break\n",
+    "    \n",
+    "    return nombres\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(eratosthene(10))  # Devrait retourner [2, 3, 5, 7]\n",
+    "print(eratosthene(2))   # Devrait retourner [2]\n",
+    "print(eratosthene(40))  # Devrait retourner [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Question 3 "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 348,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2]\n",
+      "[2, 5]\n",
+      "[2, 3, 7]\n",
+      "[2, 3, 7]\n"
+     ]
+    }
+   ],
+   "source": [
+    "from typing import List\n",
+    "\n",
+    "def eratosthene(n: int) -> List[int]:\n",
+    "    if n < 2:\n",
+    "        return []\n",
+    "    \n",
+    "    nombres = list(range(2, n + 1))\n",
+    "    premier = 2\n",
+    "    \n",
+    "    while premier * premier <= n:\n",
+    "        nombres = [x for x in nombres if (x == premier or x % premier != 0)]\n",
+    "        \n",
+    "        for i in nombres:\n",
+    "            if i > premier:\n",
+    "                premier = i\n",
+    "                break\n",
+    "    \n",
+    "    return nombres\n",
+    "\n",
+    "def liste_facteurs_premiers(n: int) -> List[int]:\n",
+    "    \"\"\"\n",
+    "    Retourne la liste des facteurs premiers de n, c'est-à-dire les nombres premiers\n",
+    "    inférieurs ou égaux à n qui divisent n sans reste.\n",
+    "    \n",
+    "    Args:\n",
+    "    n (int): Entier supérieur ou égal à 2.\n",
+    "    \n",
+    "    Returns:\n",
+    "    List[int]: Liste des facteurs premiers de n.\n",
+    "    \"\"\"\n",
+    "    # Obtenir la liste des nombres premiers jusqu'à n\n",
+    "    premiers = eratosthene(n)\n",
+    "    \n",
+    "    # Filtrer les nombres premiers qui divisent n sans reste\n",
+    "    return [p for p in premiers if n % p == 0]\n",
+    "\n",
+    "# Exemples de tests\n",
+    "print(liste_facteurs_premiers(2))             # Devrait retourner [2]\n",
+    "print(liste_facteurs_premiers(10))            # Devrait retourner [2, 5]\n",
+    "print(liste_facteurs_premiers(2 * 3 * 7))     # Devrait retourner [2, 3, 7]\n",
+    "print(liste_facteurs_premiers(2 * 3 * 7 * 7)) # Devrait retourner [2, 3, 7]"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
