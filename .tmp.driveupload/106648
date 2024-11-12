@@ -8,3 +8,5 @@
 [remote "origin"]
 	url = https://github.com/Ayoubremidi/PIC_python_tuto.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
+[pull]
+	rebase = false
